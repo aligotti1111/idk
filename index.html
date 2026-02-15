@@ -84,7 +84,7 @@
 
     /* HERO */
     .hero {
-      min-height: 100vh;
+      min-height: 50vh;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
@@ -273,106 +273,83 @@
     .post-label {
       font-family: 'DM Mono', monospace;
       font-size: 0.6rem;
-      letter-spacing: 0.25em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--red);
-      margin-bottom: 1.25rem;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .post-label::before {
-      content: '';
-      display: inline-block;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--red);
+      margin-bottom: 1.5rem;
     }
 
     .post-title {
-      font-size: 1.9rem;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
       line-height: 1.15;
+      letter-spacing: 0.02em;
       color: var(--white);
-      margin-bottom: 1rem;
-    }
-
-    .post-card.large .post-title {
-      font-size: 2.8rem;
+      margin-bottom: 1.5rem;
     }
 
     .post-excerpt {
-      font-style: italic;
+      font-size: 0.95rem;
+      line-height: 1.6;
       color: var(--gray);
-      font-size: 1rem;
-      line-height: 1.65;
-      margin-bottom: 2rem;
+      font-style: italic;
+      margin-bottom: 1.5rem;
     }
 
     .post-meta {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.6rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #555;
       display: flex;
       gap: 1.5rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      color: #444;
     }
 
-    .post-card:hover .post-title { color: var(--cream); }
-
     .vinyl-label {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
       width: 80px;
       height: 80px;
       border-radius: 50%;
-      background: conic-gradient(from 0deg, #1a1a1a 0%, #2a2a2a 25%, #1a1a1a 50%, #222 75%, #1a1a1a 100%);
-      border: 2px solid #333;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 2rem;
-      position: relative;
+      background: radial-gradient(circle at 30% 30%, rgba(214,58,47,0.3), transparent);
+      opacity: 0.1;
+      pointer-events: none;
     }
 
-    .vinyl-label::after {
-      content: '';
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: var(--red);
-      position: absolute;
-    }
-
-    /* LIST POSTS */
+    /* POSTS LIST */
     .posts-list {
       display: flex;
       flex-direction: column;
-      gap: 0;
+      gap: 1px;
+      background: var(--border);
     }
 
     .list-item {
+      background: var(--black);
       display: grid;
       grid-template-columns: 3rem 1fr auto;
-      align-items: start;
-      gap: 1.5rem;
-      padding: 1.75rem 0;
-      border-bottom: 1px solid var(--border);
+      gap: 2rem;
+      align-items: center;
+      padding: 1.75rem 2rem;
       cursor: pointer;
-      transition: opacity 0.2s;
+      transition: background 0.2s;
     }
 
-    .list-item:hover { opacity: 0.7; }
-    .list-item:first-child { border-top: 1px solid var(--border); }
+    .list-item:hover { background: #111; }
 
     .list-num {
       font-family: 'DM Mono', monospace;
-      font-size: 0.65rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
       color: #444;
-      padding-top: 0.3rem;
     }
 
-    .list-content {}
+    .list-content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
 
     .list-cat {
       font-family: 'DM Mono', monospace;
@@ -380,34 +357,29 @@
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--red);
-      margin-bottom: 0.4rem;
     }
 
     .list-title {
-      font-size: 1.3rem;
-      line-height: 1.2;
+      font-size: 1.05rem;
+      line-height: 1.4;
       color: var(--white);
-      margin-bottom: 0.3rem;
     }
 
     .list-date {
       font-family: 'DM Mono', monospace;
       font-size: 0.6rem;
-      color: #555;
+      color: #444;
       letter-spacing: 0.1em;
     }
 
     .list-arrow {
       font-size: 1.2rem;
-      color: #333;
-      padding-top: 0.2rem;
-      transition: color 0.2s, transform 0.2s;
+      color: var(--red);
+      transition: transform 0.2s;
+      text-decoration: none;
     }
 
-    .list-item:hover .list-arrow {
-      color: var(--red);
-      transform: translateX(4px);
-    }
+    .list-item:hover .list-arrow { transform: translateX(4px); }
 
     /* CATEGORIES */
     .cats-grid {
@@ -419,16 +391,16 @@
 
     .cat-card {
       background: var(--black);
-      padding: 2rem;
+      padding: 2.5rem;
       text-align: center;
       cursor: pointer;
-      transition: background 0.3s;
+      transition: background 0.2s;
     }
 
     .cat-card:hover { background: #111; }
 
     .cat-icon {
-      font-size: 2rem;
+      font-size: 2.5rem;
       margin-bottom: 1rem;
       display: block;
     }
@@ -436,17 +408,16 @@
     .cat-name {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 1.4rem;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.05em;
       color: var(--white);
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.5rem;
     }
 
     .cat-count {
       font-family: 'DM Mono', monospace;
       font-size: 0.6rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: #555;
+      letter-spacing: 0.1em;
+      color: #444;
     }
 
     /* NEWSLETTER */
@@ -615,9 +586,7 @@
     <a class="nav-logo" href="#">OH IT'S <span>GOOD</span></a>
     <ul class="nav-links">
       <li><a href="#">Features</a></li>
-      <li><a href="#">Reviews</a></li>
-      <li><a href="#">Mixes</a></li>
-      <li><a href="#">Culture</a></li>
+      <li><a href="mixes.html">Mixes</a></li>
       <li><a href="#">About</a></li>
     </ul>
   </nav>
@@ -647,25 +616,25 @@
   <!-- TICKER -->
   <div class="ticker">
     <div class="ticker-inner">
-      <span>🔥 New — Alesso & Pendulum "FADE" Out Now</span>
+      <span>🔥 NEW FRIDAY — GORDO x Reinier Zonneveld "Loco Loco" Out Now</span>
       <span>★</span>
-      <span>🔥 New — FISHER "Rain" via Catch & Release</span>
+      <span>🔥 NEW FRIDAY — Skrillex & Ahadadream "Bass Dhol" ft. Raf-Saperra</span>
       <span>★</span>
-      <span>🔥 New — Mau P "neck" on Black Book Records</span>
+      <span>🔥 FRESH — Armin van Buuren & Maddix "Mouth Go Lala"</span>
       <span>★</span>
-      <span>Drop — DJ Tennis & Ashee "I Wanna Know" via fabric Records</span>
+      <span>🔥 FRESH — Don Diablo x Bipolar Sunshine "More Than A Friend"</span>
       <span>★</span>
-      <span>Culture — FISHER Announces Ibiza [UNVRS] Residency 2026</span>
+      <span>Culture — Summer Track 2026 Predicted: "Loco Loco" Goes Viral</span>
       <span>★</span>
-      <span>🔥 New — Alesso & Pendulum "FADE" Out Now</span>
+      <span>🔥 NEW FRIDAY — GORDO x Reinier Zonneveld "Loco Loco" Out Now</span>
       <span>★</span>
-      <span>🔥 New — FISHER "Rain" via Catch & Release</span>
+      <span>🔥 NEW FRIDAY — Skrillex & Ahadadream "Bass Dhol" ft. Raf-Saperra</span>
       <span>★</span>
-      <span>🔥 New — Mau P "neck" on Black Book Records</span>
+      <span>🔥 FRESH — Armin van Buuren & Maddix "Mouth Go Lala"</span>
       <span>★</span>
-      <span>Drop — DJ Tennis & Ashee "I Wanna Know" via fabric Records</span>
+      <span>🔥 FRESH — Don Diablo x Bipolar Sunshine "More Than A Friend"</span>
       <span>★</span>
-      <span>Culture — FISHER Announces Ibiza [UNVRS] Residency 2026</span>
+      <span>Culture — Summer Track 2026 Predicted: "Loco Loco" Goes Viral</span>
       <span>★</span>
     </div>
   </div>
@@ -680,39 +649,39 @@
 
       <div class="post-card large">
         <div class="vinyl-label"></div>
-        <div class="post-label">🔥 This Week's Drop</div>
-        <h3 class="post-title">Alesso & Pendulum — "FADE" Is the Progressive House Revival We've Been Waiting For</h3>
-        <p class="post-excerpt">Dropped Feb 6th and already everywhere. Alesso links up with Pendulum's Rob Swire for a euphoric, festival-ready anthem that blends progressive house synths with raw drum & bass vocals. This one's built for Red Rocks and beyond — and it's going to sound absolutely massive this summer.</p>
+        <div class="post-label">🔥 HOT NOW</div>
+        <h3 class="post-title">John Summit & LAVINIA — "SHADOWS" Is a Seductive Tech-House Escape Into The Night</h3>
+        <p class="post-excerpt">Released Feb 11th via Experts Only/Darkroom Records. The superstar DJ delivers his second single from upcoming album CTRL ESCAPE (April 15). Berlin-based LAVINIA's haunting vocals beckon listeners into a midnight drive through a city that never sleeps. At 138 BPM, the track pulses with anthemic energy — intimate yet mysterious, where existential questions meet four-on-the-floor beats. Summit transforms from accountant to mainstage architect, closing Ultra Miami's mainstage this March.</p>
         <div class="post-meta">
           <span>By Jade Orion</span>
-          <span>Feb 10, 2026</span>
-          <span>7 min read</span>
+          <span>Feb 11, 2026</span>
+          <span>8 min read</span>
         </div>
-        <a class="yt-btn" href="https://www.youtube.com/results?search_query=Alesso+Pendulum+FADE+official+2026" target="_blank" rel="noopener">▶ Watch on YouTube</a>
+        <a class="yt-btn" href="https://www.youtube.com/watch?v=TSZo2eZzD6s" target="_blank" rel="noopener">▶ Watch on YouTube</a>
       </div>
 
       <div class="post-card">
-        <div class="post-label">🔥 This Week's Drop</div>
-        <h3 class="post-title">FISHER — "Rain" Turns His Signature Groove Into Pure Euphoria</h3>
-        <p class="post-excerpt">Out Feb 6th on his own Catch & Release label. FISHER's new track opens with a strutting disco bassline and a falsetto hook that just hangs in the air. Already tested live on 40,000 people in San Francisco — it hit.</p>
+        <div class="post-label">🔥 NEW RELEASE</div>
+        <h3 class="post-title">FISHER — "Rain" Delivers Peak-Time Tech House Energy</h3>
+        <p class="post-excerpt">Out Feb 6th via Catch & Release. Australian powerhouse FISHER drops a dancefloor essential built around a rolling groove and hypnotic vocal hook. The track features a strutting bassline with subtle disco influences and a falsetto shimmer that glides over warm reverb. Already tested at his history-making 40,000-person Moscone Center show, this one's designed for long summer nights and hands-in-the-air moments.</p>
         <div class="post-meta">
           <span>By Milo Tress</span>
-          <span>Feb 11, 2026</span>
-          <span>5 min read</span>
+          <span>Feb 6, 2026</span>
+          <span>6 min read</span>
         </div>
-        <a class="yt-btn" href="https://www.youtube.com/results?search_query=FISHER+Rain+official+2026+Catch+Release" target="_blank" rel="noopener">▶ Watch on YouTube</a>
+        <a class="yt-btn" href="https://youtube.com/watch?v=v6IgGAIXBaE" target="_blank" rel="noopener">▶ Watch on YouTube</a>
       </div>
 
       <div class="post-card">
-        <div class="post-label">🔥 This Week's Drop</div>
-        <h3 class="post-title">Mau P — "neck" on Black Book Records Is Minimal, Rude, and Unstoppable</h3>
-        <p class="post-excerpt">Out Feb 6th via Chris Lake's Black Book Records. Mau P strips it right back — a stepping bassline, diced vocal stabs, and pure dancefloor chemistry. Same brutal instinct as "Drugs From Amsterdam." Don't sleep on this one.</p>
+        <div class="post-label">🔥 NEW RELEASE</div>
+        <h3 class="post-title">Mau P — "neck" Returns to Black Book Records With Minimal Tech House Fire</h3>
+        <p class="post-excerpt">Out Feb 6th via Black Book Records. First introduced during his Sahara Tent headline at Coachella 2025, "neck" has been refined and road-tested for months. The track pairs Mau P's signature gritty basslines with playful vocal hooks in a rhythm-forward minimal tech house cut. A bold return to the label where he made early waves with "Dress Code" — this one's built for pure dancefloor impact.</p>
         <div class="post-meta">
           <span>By Rae Volta</span>
-          <span>Feb 12, 2026</span>
-          <span>6 min read</span>
+          <span>Feb 6, 2026</span>
+          <span>5 min read</span>
         </div>
-        <a class="yt-btn" href="https://www.youtube.com/results?search_query=Mau+P+neck+Black+Book+Records+official+2026" target="_blank" rel="noopener">▶ Watch on YouTube</a>
+        <a class="yt-btn" href="https://www.youtube.com/watch?v=jbRqcAtQDaw" target="_blank" rel="noopener">▶ Watch on YouTube</a>
       </div>
 
     </div>
@@ -730,45 +699,18 @@
         <div class="list-content">
           <div class="list-cat">Progressive House</div>
           <div class="list-title">Alesso & Pendulum — "FADE" (Feb 6, 2026 · Capitol/EMI)</div>
-          <div class="list-date">Feb 13, 2026</div>
+          <div class="list-date">Feb 6, 2026</div>
         </div>
-        <a class="list-arrow" href="https://www.youtube.com/results?search_query=Alesso+Pendulum+FADE+official+2026" target="_blank" rel="noopener">▶</a>
+        <a class="list-arrow" href="https://www.youtube.com/watch?v=dyNV5WGKJS8" target="_blank" rel="noopener">▶</a>
       </div>
       <div class="list-item">
         <span class="list-num">02</span>
         <div class="list-content">
-          <div class="list-cat">Tech House</div>
-          <div class="list-title">FISHER — "Rain" (Feb 6, 2026 · Catch & Release)</div>
-          <div class="list-date">Feb 12, 2026</div>
-        </div>
-        <a class="list-arrow" href="https://www.youtube.com/results?search_query=FISHER+Rain+2026+Catch+Release+official" target="_blank" rel="noopener">▶</a>
-      </div>
-      <div class="list-item">
-        <span class="list-num">03</span>
-        <div class="list-content">
-          <div class="list-cat">Tech House</div>
-          <div class="list-title">Mau P — "neck" (Feb 6, 2026 · Black Book Records)</div>
-          <div class="list-date">Feb 11, 2026</div>
-        </div>
-        <a class="list-arrow" href="https://www.youtube.com/results?search_query=Mau+P+neck+Black+Book+Records+2026+official" target="_blank" rel="noopener">▶</a>
-      </div>
-      <div class="list-item">
-        <span class="list-num">04</span>
-        <div class="list-content">
-          <div class="list-cat">Club / House</div>
+          <div class="list-cat">House / Techno</div>
           <div class="list-title">DJ Tennis & Ashee — "I Wanna Know" (Feb 13, 2026 · fabric Records)</div>
-          <div class="list-date">Feb 10, 2026</div>
+          <div class="list-date">Feb 13, 2026</div>
         </div>
-        <a class="list-arrow" href="https://www.youtube.com/results?search_query=DJ+Tennis+Ashee+I+Wanna+Know+fabric+Records+2026" target="_blank" rel="noopener">▶</a>
-      </div>
-      <div class="list-item">
-        <span class="list-num">05</span>
-        <div class="list-content">
-          <div class="list-cat">Mix</div>
-          <div class="list-title">Oh It's Good Mix Vol. 31 — All Feb 2026 Drops, Back to Back</div>
-          <div class="list-date">Feb 8, 2026</div>
-        </div>
-        <span class="list-arrow">▶</span>
+        <a class="list-arrow" href="https://www.youtube.com/watch?v=nSDnKBB_pa8" target="_blank" rel="noopener">▶</a>
       </div>
     </div>
   </section>
@@ -780,24 +722,24 @@
     </div>
     <div class="cats-grid">
       <div class="cat-card">
-        <span class="cat-icon">🏠</span>
-        <div class="cat-name">House</div>
-        <div class="cat-count">118 posts</div>
+        <span class="cat-icon">🎧</span>
+        <div class="cat-name">Reviews</div>
+        <div class="cat-count">156 posts</div>
       </div>
       <div class="cat-card">
-        <span class="cat-icon">⚙️</span>
-        <div class="cat-name">Techno</div>
-        <div class="cat-count">94 posts</div>
+        <span class="cat-icon">🎤</span>
+        <div class="cat-name">Interviews</div>
+        <div class="cat-count">72 posts</div>
       </div>
       <div class="cat-card">
-        <span class="cat-icon">🌀</span>
-        <div class="cat-name">Drum & Bass</div>
-        <div class="cat-count">61 posts</div>
+        <span class="cat-icon">🔊</span>
+        <div class="cat-name">New Drops</div>
+        <div class="cat-count">189 posts</div>
       </div>
       <div class="cat-card">
-        <span class="cat-icon">🚀</span>
-        <div class="cat-name">Trance</div>
-        <div class="cat-count">73 posts</div>
+        <span class="cat-icon">🌍</span>
+        <div class="cat-name">Culture</div>
+        <div class="cat-count">104 posts</div>
       </div>
     </div>
   </section>
@@ -806,29 +748,95 @@
   <div class="newsletter">
     <div class="newsletter-text">
       <p class="eyebrow">// Weekly Drops</p>
-      <h2>Never Miss a Drop</h2>
-      <p>Every Friday — the hottest new EDM releases, reviews, and one track that's been on repeat all week. No filler, just bangers.</p>
+      <h2>Stay in the Groove</h2>
+      <p>Every Friday — new releases, festival news, and tracks we can't stop playing. No noise, just bangers.</p>
     </div>
     <div class="newsletter-form">
-      <div class="form-group">
-        <input type="email" placeholder="your@email.com" />
-        <button>Subscribe</button>
-      </div>
-      <p class="form-note">// No spam. Unsubscribe anytime. ~1,200 subscribers.</p>
+      <form id="newsletterForm">
+        <div class="form-group">
+          <input type="email" id="emailInput" placeholder="your@email.com" required />
+          <button type="submit">Subscribe</button>
+        </div>
+        <p class="form-note" id="formNote">// No spam. Unsubscribe anytime. <span id="subscriberCount">~2,100</span> subscribers.</p>
+      </form>
     </div>
   </div>
 
   <!-- FOOTER -->
   <footer>
     <div class="footer-logo">OH IT'S <span>GOOD</span></div>
-    <p class="footer-copy">© 2025 Oh It's Good. Turn it up.</p>
+    <p class="footer-copy">© 2026 Oh It's Good. Feel the music.</p>
     <ul class="footer-links">
       <li><a href="#">Twitter</a></li>
       <li><a href="#">Instagram</a></li>
       <li><a href="#">RSS</a></li>
       <li><a href="#">Contact</a></li>
+      <li><a href="admin-login.html" style="color: var(--border);">Admin</a></li>
     </ul>
   </footer>
+
+  <script>
+    // Newsletter subscription
+    document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const emailInput = document.getElementById('emailInput');
+      const email = emailInput.value.trim();
+      const formNote = document.getElementById('formNote');
+      
+      if (!email) return;
+      
+      // Get existing subscribers
+      const subscribers = JSON.parse(localStorage.getItem('subscribers') || '[]');
+      
+      // Check if already subscribed
+      if (subscribers.some(sub => sub.email === email)) {
+        formNote.textContent = '// Already subscribed! Check your inbox.';
+        formNote.style.color = '#d63a2f';
+        setTimeout(() => {
+          formNote.innerHTML = '// No spam. Unsubscribe anytime. <span id="subscriberCount">~2,100</span> subscribers.';
+          formNote.style.color = '';
+          updateSubscriberCount();
+        }, 3000);
+        return;
+      }
+      
+      // Add new subscriber
+      subscribers.push({
+        email: email,
+        date: new Date().toISOString()
+      });
+      
+      localStorage.setItem('subscribers', JSON.stringify(subscribers));
+      
+      // Show success message
+      formNote.textContent = '// Thanks for subscribing! Check your inbox.';
+      formNote.style.color = '#d63a2f';
+      emailInput.value = '';
+      
+      // Reset message after 3 seconds
+      setTimeout(() => {
+        formNote.innerHTML = '// No spam. Unsubscribe anytime. <span id="subscriberCount">~2,100</span> subscribers.';
+        formNote.style.color = '';
+        updateSubscriberCount();
+      }, 3000);
+      
+      updateSubscriberCount();
+    });
+    
+    // Update subscriber count display
+    function updateSubscriberCount() {
+      const subscribers = JSON.parse(localStorage.getItem('subscribers') || '[]');
+      const count = 2100 + subscribers.length;
+      const countElement = document.getElementById('subscriberCount');
+      if (countElement) {
+        countElement.textContent = '~' + count.toLocaleString();
+      }
+    }
+    
+    // Initialize count on page load
+    updateSubscriberCount();
+  </script>
 
 </body>
 </html>

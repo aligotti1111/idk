@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Login — Oh It's Good</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a;
+      --white: #f5f2ec;
+      --red: #d63a2f;
+      --gray: #888;
+      --border: #2a2a2a;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'DM Serif Display', serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .login-container {
+      max-width: 400px;
+      width: 100%;
+      padding: 3rem;
+      border: 1px solid var(--border);
+      background: rgba(20, 20, 20, 0.5);
+    }
+
+    .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 0.08em;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .logo span { color: var(--red); }
+
+    h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 2rem;
+      text-align: center;
+      color: var(--gray);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.75rem;
+      background: var(--black);
+      border: 1px solid var(--border);
+      color: var(--white);
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: var(--red);
+    }
+
+    button {
+      width: 100%;
+      padding: 0.75rem;
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    button:hover {
+      opacity: 0.8;
+    }
+
+    .error {
+      color: var(--red);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .back-link {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .back-link a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .back-link a:hover {
+      color: var(--white);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <div class="logo">OH IT'S <span>GOOD</span></div>
+    <h2>Admin Login</h2>
+    
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" required />
+      </div>
+      
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" required />
+      </div>
+      
+      <button type="submit">Login</button>
+      
+      <div id="error" class="error" style="display: none;"></div>
+    </form>
+
+    <div class="back-link">
+      <a href="index.html">← Back to Site</a>
+    </div>
+  </div>
+
+  <script>
+    // Simple admin credentials (in production, this should be server-side)
+    const ADMIN_USERNAME = 'admin';
+    const ADMIN_PASSWORD = 'ohitsgood2026';
+
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const errorDiv = document.getElementById('error');
+      
+      if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+        // Store login session
+        sessionStorage.setItem('adminLoggedIn', 'true');
+        window.location.href = 'admin-dashboard.html';
+      } else {
+        errorDiv.textContent = 'Invalid credentials';
+        errorDiv.style.display = 'block';
+      }
+    });
+  </script>
+
+</body>
+</html>
