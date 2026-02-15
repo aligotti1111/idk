@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mixes — Oh It's Good</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a;
+      --white: #f5f2ec;
+      --cream: #ede9e0;
+      --red: #d63a2f;
+      --gray: #888;
+      --light-gray: #ccc;
+      --border: #2a2a2a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'DM Serif Display', serif;
+      overflow-x: hidden;
+    }
+
+    /* GRAIN OVERLAY */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.35;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 2.5rem;
+      border-bottom: 1px solid var(--border);
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--red); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a.active { color: var(--red); }
+
+    /* PAGE HEADER */
+    .page-header {
+      padding: 8rem 2.5rem 3rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-header h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 4rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+
+    .page-header p {
+      font-size: 1.1rem;
+      color: var(--gray);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* MIXES GRID */
+    .mixes-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2.5rem;
+    }
+
+    .mix-item {
+      margin-bottom: 4rem;
+      padding-bottom: 4rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mix-item:last-child {
+      border-bottom: none;
+    }
+
+    .mix-header {
+      margin-bottom: 1.5rem;
+    }
+
+    .mix-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+
+    .mix-meta {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .mix-description {
+      color: var(--gray);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      max-width: 700px;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 2.5rem;
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--gray);
+      letter-spacing: 0.1em;
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .page-header h1 { font-size: 2.5rem; }
+      .page-header { padding: 6rem 1.5rem 2rem; }
+      .mixes-container { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="index.html">OH IT'S <span>GOOD</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#featured">Features</a></li>
+      <li><a href="mixes.html" class="active">Mixes</a></li>
+      <li><a href="index.html#about">About</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-header">
+    <h1>Mixes</h1>
+    <p>Curated sets from the best DJs and producers. New mixes added weekly.</p>
+  </div>
+
+  <div class="mixes-container">
+
+    <div class="mix-item">
+      <div class="mix-header">
+        <h2 class="mix-title">2025 Send-Off Mix</h2>
+        <div class="mix-meta">Ali Gotti · Dec 2025 · 1hr 12min</div>
+      </div>
+      <p class="mix-description">
+        A year-end celebration bringing together the biggest tracks that defined 2025. From peak-time tech house to melodic progressive moments, this mix captures the energy and evolution of the dancefloor over the past twelve months.
+      </p>
+      <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/aligotti/2025-send-off-mix&color=%23d63a2f&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+    </div>
+
+    <!-- Add more mixes here -->
+
+  </div>
+
+  <footer>
+    <p>© 2026 OH IT'S GOOD // ALL RIGHTS RESERVED</p>
+  </footer>
+
+</body>
+</html>
