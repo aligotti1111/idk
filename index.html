@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oh It's Good — Music Blog</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a;
+      --white: #f5f2ec;
+      --cream: #ede9e0;
+      --red: #d63a2f;
+      --gray: #888;
+      --light-gray: #ccc;
+      --border: #2a2a2a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'DM Serif Display', serif;
+      overflow-x: hidden;
+    }
+
+    /* GRAIN OVERLAY */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.35;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 2.5rem;
+      border-bottom: 1px solid var(--border);
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--red); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 2.5rem;
+      padding-top: 6rem;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 70% 40%, rgba(214,58,47,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 20% 80%, rgba(214,58,47,0.06) 0%, transparent 60%);
+    }
+
+    .hero-vinyl {
+      position: absolute;
+      right: -80px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 520px;
+      height: 520px;
+      opacity: 0.15;
+      animation: spin 30s linear infinite;
+    }
+
+    @keyframes spin {
+      from { transform: translateY(-50%) rotate(0deg); }
+      to { transform: translateY(-50%) rotate(360deg); }
+    }
+
+    .hero-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.2s;
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(5rem, 14vw, 13rem);
+      line-height: 0.9;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.4s;
+    }
+
+    .hero-title em {
+      color: var(--red);
+      font-style: normal;
+    }
+
+    .hero-sub {
+      margin-top: 2rem;
+      max-width: 520px;
+      font-size: 1.15rem;
+      line-height: 1.6;
+      color: var(--gray);
+      font-style: italic;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.6s;
+    }
+
+    .hero-scroll {
+      margin-top: 3rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.8s;
+    }
+
+    .hero-scroll span {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    .scroll-line {
+      width: 60px;
+      height: 1px;
+      background: var(--gray);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* TICKER */
+    .ticker {
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+      padding: 0.75rem 0;
+      background: var(--red);
+    }
+
+    .ticker-inner {
+      display: flex;
+      gap: 3rem;
+      animation: ticker 18s linear infinite;
+      white-space: nowrap;
+    }
+
+    .ticker-inner span {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--black);
+      font-weight: 500;
+    }
+
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* FEATURED */
+    .section {
+      padding: 5rem 2.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 3rem;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.8rem;
+      letter-spacing: 0.05em;
+      color: var(--white);
+    }
+
+    .section-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      text-decoration: none;
+      border-bottom: 1px solid var(--red);
+      padding-bottom: 2px;
+      transition: opacity 0.2s;
+    }
+
+    .section-link:hover { opacity: 0.6; }
+
+    /* FEATURED GRID */
+    .featured-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 1px;
+      background: var(--border);
+    }
+
+    .post-card {
+      background: var(--black);
+      padding: 2.5rem;
+      cursor: pointer;
+      transition: background 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .post-card:hover { background: #111; }
+
+    .post-card.large {
+      grid-row: span 2;
+    }
+
+    .post-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .post-label::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--red);
+    }
+
+    .post-title {
+      font-size: 1.9rem;
+      line-height: 1.15;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .post-card.large .post-title {
+      font-size: 2.8rem;
+    }
+
+    .post-excerpt {
+      font-style: italic;
+      color: var(--gray);
+      font-size: 1rem;
+      line-height: 1.65;
+      margin-bottom: 2rem;
+    }
+
+    .post-meta {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #555;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .post-card:hover .post-title { color: var(--cream); }
+
+    .vinyl-label {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, #1a1a1a 0%, #2a2a2a 25%, #1a1a1a 50%, #222 75%, #1a1a1a 100%);
+      border: 2px solid #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .vinyl-label::after {
+      content: '';
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--red);
+      position: absolute;
+    }
+
+    /* LIST POSTS */
+    .posts-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .list-item {
+      display: grid;
+      grid-template-columns: 3rem 1fr auto;
+      align-items: start;
+      gap: 1.5rem;
+      padding: 1.75rem 0;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .list-item:hover { opacity: 0.7; }
+    .list-item:first-child { border-top: 1px solid var(--border); }
+
+    .list-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: #444;
+      padding-top: 0.3rem;
+    }
+
+    .list-content {}
+
+    .list-cat {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.4rem;
+    }
+
+    .list-title {
+      font-size: 1.3rem;
+      line-height: 1.2;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+
+    .list-date {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      color: #555;
+      letter-spacing: 0.1em;
+    }
+
+    .list-arrow {
+      font-size: 1.2rem;
+      color: #333;
+      padding-top: 0.2rem;
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    .list-item:hover .list-arrow {
+      color: var(--red);
+      transform: translateX(4px);
+    }
+
+    /* CATEGORIES */
+    .cats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+    }
+
+    .cat-card {
+      background: var(--black);
+      padding: 2rem;
+      text-align: center;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .cat-card:hover { background: #111; }
+
+    .cat-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .cat-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.06em;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+
+    .cat-count {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #555;
+    }
+
+    /* NEWSLETTER */
+    .newsletter {
+      padding: 5rem 2.5rem;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .newsletter-text .eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1rem;
+    }
+
+    .newsletter-text h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem;
+      letter-spacing: 0.03em;
+      line-height: 1;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .newsletter-text p {
+      font-style: italic;
+      color: var(--gray);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .newsletter-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      border: 1px solid var(--border);
+      background: #0f0f0f;
+    }
+
+    .form-group input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      padding: 1rem 1.25rem;
+      color: var(--white);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+
+    .form-group input::placeholder { color: #444; }
+
+    .form-group button {
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      padding: 1rem 1.5rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .form-group button:hover { opacity: 0.85; }
+
+    .form-note {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      color: #444;
+      letter-spacing: 0.1em;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 3rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.08em;
+      color: var(--white);
+    }
+
+    .footer-logo span { color: var(--red); }
+
+    .footer-copy {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      color: #444;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #444;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--white); }
+
+    .yt-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 1.5rem;
+      background: #ff0000;
+      color: #fff;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.55rem 1rem;
+      transition: opacity 0.2s;
+    }
+
+    .yt-btn:hover { opacity: 0.82; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.25rem; }
+      .nav-links { display: none; }
+      .hero { padding: 1.5rem; padding-top: 5rem; }
+      .hero-vinyl { width: 300px; height: 300px; right: -80px; opacity: 0.08; }
+      .section { padding: 3rem 1.25rem; }
+      .featured-grid { grid-template-columns: 1fr; }
+      .post-card.large { grid-row: span 1; }
+      .cats-grid { grid-template-columns: repeat(2, 1fr); }
+      .newsletter { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 1.25rem; }
+      .list-item { grid-template-columns: 2rem 1fr auto; gap: 1rem; }
+      footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#">OH IT'S <span>GOOD</span></a>
+    <ul class="nav-links">
+      <li><a href="#">Features</a></li>
+      <li><a href="#">Reviews</a></li>
+      <li><a href="#">Mixes</a></li>
+      <li><a href="#">Culture</a></li>
+      <li><a href="#">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <svg class="hero-vinyl" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="100" cy="100" r="99" stroke="white" stroke-width="0.5"/>
+      <circle cx="100" cy="100" r="85" stroke="white" stroke-width="0.3"/>
+      <circle cx="100" cy="100" r="70" stroke="white" stroke-width="0.3"/>
+      <circle cx="100" cy="100" r="55" stroke="white" stroke-width="0.3"/>
+      <circle cx="100" cy="100" r="40" stroke="white" stroke-width="0.3"/>
+      <circle cx="100" cy="100" r="25" stroke="white" stroke-width="0.5"/>
+      <circle cx="100" cy="100" r="10" fill="white" opacity="0.4"/>
+      <circle cx="100" cy="100" r="4" fill="white"/>
+    </svg>
+    <p class="hero-tag">// Your EDM Drop Zone</p>
+    <h1 class="hero-title">OH IT'S<br/><em>GOOD</em></h1>
+    <p class="hero-sub">The freshest EDM releases, reviews, and rave culture — straight from the dance floor to your feed.</p>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>Scroll to explore</span>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker-inner">
+      <span>🔥 New — Alesso & Pendulum "FADE" Out Now</span>
+      <span>★</span>
+      <span>🔥 New — FISHER "Rain" via Catch & Release</span>
+      <span>★</span>
+      <span>🔥 New — Mau P "neck" on Black Book Records</span>
+      <span>★</span>
+      <span>Drop — DJ Tennis & Ashee "I Wanna Know" via fabric Records</span>
+      <span>★</span>
+      <span>Culture — FISHER Announces Ibiza [UNVRS] Residency 2026</span>
+      <span>★</span>
+      <span>🔥 New — Alesso & Pendulum "FADE" Out Now</span>
+      <span>★</span>
+      <span>🔥 New — FISHER "Rain" via Catch & Release</span>
+      <span>★</span>
+      <span>🔥 New — Mau P "neck" on Black Book Records</span>
+      <span>★</span>
+      <span>Drop — DJ Tennis & Ashee "I Wanna Know" via fabric Records</span>
+      <span>★</span>
+      <span>Culture — FISHER Announces Ibiza [UNVRS] Residency 2026</span>
+      <span>★</span>
+    </div>
+  </div>
+
+  <!-- FEATURED POSTS -->
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Featured</h2>
+      <a class="section-link" href="#">All Features →</a>
+    </div>
+    <div class="featured-grid">
+
+      <div class="post-card large">
+        <div class="vinyl-label"></div>
+        <div class="post-label">🔥 This Week's Drop</div>
+        <h3 class="post-title">Alesso & Pendulum — "FADE" Is the Progressive House Revival We've Been Waiting For</h3>
+        <p class="post-excerpt">Dropped Feb 6th and already everywhere. Alesso links up with Pendulum's Rob Swire for a euphoric, festival-ready anthem that blends progressive house synths with raw drum & bass vocals. This one's built for Red Rocks and beyond — and it's going to sound absolutely massive this summer.</p>
+        <div class="post-meta">
+          <span>By Jade Orion</span>
+          <span>Feb 10, 2026</span>
+          <span>7 min read</span>
+        </div>
+        <a class="yt-btn" href="https://www.youtube.com/results?search_query=Alesso+Pendulum+FADE+official+2026" target="_blank" rel="noopener">▶ Watch on YouTube</a>
+      </div>
+
+      <div class="post-card">
+        <div class="post-label">🔥 This Week's Drop</div>
+        <h3 class="post-title">FISHER — "Rain" Turns His Signature Groove Into Pure Euphoria</h3>
+        <p class="post-excerpt">Out Feb 6th on his own Catch & Release label. FISHER's new track opens with a strutting disco bassline and a falsetto hook that just hangs in the air. Already tested live on 40,000 people in San Francisco — it hit.</p>
+        <div class="post-meta">
+          <span>By Milo Tress</span>
+          <span>Feb 11, 2026</span>
+          <span>5 min read</span>
+        </div>
+        <a class="yt-btn" href="https://www.youtube.com/results?search_query=FISHER+Rain+official+2026+Catch+Release" target="_blank" rel="noopener">▶ Watch on YouTube</a>
+      </div>
+
+      <div class="post-card">
+        <div class="post-label">🔥 This Week's Drop</div>
+        <h3 class="post-title">Mau P — "neck" on Black Book Records Is Minimal, Rude, and Unstoppable</h3>
+        <p class="post-excerpt">Out Feb 6th via Chris Lake's Black Book Records. Mau P strips it right back — a stepping bassline, diced vocal stabs, and pure dancefloor chemistry. Same brutal instinct as "Drugs From Amsterdam." Don't sleep on this one.</p>
+        <div class="post-meta">
+          <span>By Rae Volta</span>
+          <span>Feb 12, 2026</span>
+          <span>6 min read</span>
+        </div>
+        <a class="yt-btn" href="https://www.youtube.com/results?search_query=Mau+P+neck+Black+Book+Records+official+2026" target="_blank" rel="noopener">▶ Watch on YouTube</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- LATEST POSTS LIST -->
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Latest</h2>
+      <a class="section-link" href="#">Archive →</a>
+    </div>
+    <div class="posts-list">
+      <div class="list-item">
+        <span class="list-num">01</span>
+        <div class="list-content">
+          <div class="list-cat">Progressive House</div>
+          <div class="list-title">Alesso & Pendulum — "FADE" (Feb 6, 2026 · Capitol/EMI)</div>
+          <div class="list-date">Feb 13, 2026</div>
+        </div>
+        <a class="list-arrow" href="https://www.youtube.com/results?search_query=Alesso+Pendulum+FADE+official+2026" target="_blank" rel="noopener">▶</a>
+      </div>
+      <div class="list-item">
+        <span class="list-num">02</span>
+        <div class="list-content">
+          <div class="list-cat">Tech House</div>
+          <div class="list-title">FISHER — "Rain" (Feb 6, 2026 · Catch & Release)</div>
+          <div class="list-date">Feb 12, 2026</div>
+        </div>
+        <a class="list-arrow" href="https://www.youtube.com/results?search_query=FISHER+Rain+2026+Catch+Release+official" target="_blank" rel="noopener">▶</a>
+      </div>
+      <div class="list-item">
+        <span class="list-num">03</span>
+        <div class="list-content">
+          <div class="list-cat">Tech House</div>
+          <div class="list-title">Mau P — "neck" (Feb 6, 2026 · Black Book Records)</div>
+          <div class="list-date">Feb 11, 2026</div>
+        </div>
+        <a class="list-arrow" href="https://www.youtube.com/results?search_query=Mau+P+neck+Black+Book+Records+2026+official" target="_blank" rel="noopener">▶</a>
+      </div>
+      <div class="list-item">
+        <span class="list-num">04</span>
+        <div class="list-content">
+          <div class="list-cat">Club / House</div>
+          <div class="list-title">DJ Tennis & Ashee — "I Wanna Know" (Feb 13, 2026 · fabric Records)</div>
+          <div class="list-date">Feb 10, 2026</div>
+        </div>
+        <a class="list-arrow" href="https://www.youtube.com/results?search_query=DJ+Tennis+Ashee+I+Wanna+Know+fabric+Records+2026" target="_blank" rel="noopener">▶</a>
+      </div>
+      <div class="list-item">
+        <span class="list-num">05</span>
+        <div class="list-content">
+          <div class="list-cat">Mix</div>
+          <div class="list-title">Oh It's Good Mix Vol. 31 — All Feb 2026 Drops, Back to Back</div>
+          <div class="list-date">Feb 8, 2026</div>
+        </div>
+        <span class="list-arrow">▶</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Browse by Topic</h2>
+    </div>
+    <div class="cats-grid">
+      <div class="cat-card">
+        <span class="cat-icon">🏠</span>
+        <div class="cat-name">House</div>
+        <div class="cat-count">118 posts</div>
+      </div>
+      <div class="cat-card">
+        <span class="cat-icon">⚙️</span>
+        <div class="cat-name">Techno</div>
+        <div class="cat-count">94 posts</div>
+      </div>
+      <div class="cat-card">
+        <span class="cat-icon">🌀</span>
+        <div class="cat-name">Drum & Bass</div>
+        <div class="cat-count">61 posts</div>
+      </div>
+      <div class="cat-card">
+        <span class="cat-icon">🚀</span>
+        <div class="cat-name">Trance</div>
+        <div class="cat-count">73 posts</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <div class="newsletter">
+    <div class="newsletter-text">
+      <p class="eyebrow">// Weekly Drops</p>
+      <h2>Never Miss a Drop</h2>
+      <p>Every Friday — the hottest new EDM releases, reviews, and one track that's been on repeat all week. No filler, just bangers.</p>
+    </div>
+    <div class="newsletter-form">
+      <div class="form-group">
+        <input type="email" placeholder="your@email.com" />
+        <button>Subscribe</button>
+      </div>
+      <p class="form-note">// No spam. Unsubscribe anytime. ~1,200 subscribers.</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">OH IT'S <span>GOOD</span></div>
+    <p class="footer-copy">© 2025 Oh It's Good. Turn it up.</p>
+    <ul class="footer-links">
+      <li><a href="#">Twitter</a></li>
+      <li><a href="#">Instagram</a></li>
+      <li><a href="#">RSS</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </footer>
+
+</body>
+</html>
