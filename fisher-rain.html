@@ -102,6 +102,28 @@
       text-decoration: none;
     }
     .nav-logo span { color: var(--red); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--white);
+    }
+
     .back-link {
       font-family: 'DM Mono', monospace;
       font-size: 0.7rem;
@@ -213,9 +235,15 @@
 </head>
 <body>
 
-  <nav>
+  <nav role="navigation" aria-label="Main navigation">
     <a class="nav-logo" href="index.html">OH IT'S <span>GOOD</span></a>
-    <a class="back-link" href="index.html">← Back to Blog</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Features</a></li>
+      <li><a href="remixes.html">Remixes</a></li>
+      <li><a href="mashups.html">Mashups</a></li>
+      <li><a href="mixes.html">Mixes</a></li>
+      <li><a href="index.html#about">About</a></li>
+    </ul>
   </nav>
 
   <article>

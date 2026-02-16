@@ -27,6 +27,24 @@
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 2.5rem; border-bottom: 1px solid var(--border); background: rgba(10,10,10,0.92); backdrop-filter: blur(10px); }
     .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 0.08em; color: var(--white); text-decoration: none; }
     .nav-logo span { color: var(--red); }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--white);
+    }
     .back-link { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray); text-decoration: none; transition: color 0.2s; }
     .back-link:hover { color: var(--white); }
     article { max-width: 800px; margin: 0 auto; padding: 8rem 2.5rem 4rem; }
@@ -47,9 +65,15 @@
   </style>
 </head>
 <body>
-  <nav>
+  <nav role="navigation" aria-label="Main navigation">
     <a class="nav-logo" href="index.html">OH IT'S <span>GOOD</span></a>
-    <a class="back-link" href="index.html">← Back to Blog</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Features</a></li>
+      <li><a href="remixes.html">Remixes</a></li>
+      <li><a href="mashups.html">Mashups</a></li>
+      <li><a href="mixes.html">Mixes</a></li>
+      <li><a href="index.html#about">About</a></li>
+    </ul>
   </nav>
   <article>
     <div class="category">Minimal Tech House</div>

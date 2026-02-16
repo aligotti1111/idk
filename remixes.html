@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4EPC4XVSFY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4EPC4XVSFY');
+  </script>
+  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Primary Meta Tags -->
+  <title>Remixes | Oh It's Good</title>
+  <meta name="title" content="Remixes | Oh It's Good" />
+  <meta name="description" content="The best EDM remixes and bootlegs. Fresh takes on classic tracks and new releases from top DJs and producers." />
+  <meta name="keywords" content="EDM remixes, house remixes, techno remixes, bootlegs, dance music remixes, DJ edits" />
+  <link rel="canonical" href="https://ohitsgood.com/remixes.html" />
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ohitsgood.com/remixes.html" />
+  <meta property="og:title" content="Remixes | Oh It's Good" />
+  <meta property="og:description" content="The best EDM remixes and bootlegs." />
+  
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a;
+      --white: #f5f2ec;
+      --cream: #ede9e0;
+      --red: #d63a2f;
+      --gray: #888;
+      --border: #2a2a2a;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'DM Serif Display', serif;
+      line-height: 1.6;
+    }
+
+    /* GRAIN OVERLAY */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.35;
+    }
+
+    /* NAVIGATION */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 2.5rem;
+      border-bottom: 1px solid var(--border);
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--red); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--white);
+    }
+
+    /* HERO */
+    .hero {
+      padding: 10rem 2.5rem 4rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 5rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--gray);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* CONTENT */
+    .content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2.5rem;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 0.08em;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* REMIX GRID */
+    .remix-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .remix-card {
+      background: rgba(20, 20, 20, 0.5);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      transition: border-color 0.2s;
+    }
+
+    .remix-card:hover {
+      border-color: var(--red);
+    }
+
+    .remix-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1rem;
+    }
+
+    .remix-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      letter-spacing: 0.05em;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+
+    .remix-artist {
+      font-size: 1rem;
+      color: var(--gray);
+      margin-bottom: 1rem;
+    }
+
+    .remix-meta {
+      display: flex;
+      gap: 1.5rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+    }
+
+    .yt-btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: var(--red);
+      color: var(--white);
+      text-decoration: none;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: opacity 0.2s;
+    }
+
+    .yt-btn:hover {
+      opacity: 0.8;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 2.5rem;
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--gray);
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+      }
+
+      .nav-links {
+        gap: 1rem;
+      }
+
+      .hero {
+        padding: 8rem 1.5rem 3rem;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+      }
+
+      .remix-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .content {
+        padding: 3rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav role="navigation" aria-label="Main navigation">
+    <a class="nav-logo" href="index.html">OH IT'S <span>GOOD</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Features</a></li>
+      <li><a href="remixes.html" class="active">Remixes</a></li>
+      <li><a href="mashups.html">Mashups</a></li>
+      <li><a href="mixes.html">Mixes</a></li>
+      <li><a href="index.html#about">About</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <h1>REMIXES</h1>
+    <p>Fresh takes on classics and new releases. The best remixes and bootlegs from top DJs and producers.</p>
+  </section>
+
+  <div class="content">
+    
+    <h2 class="section-title">Latest Remixes</h2>
+    
+    <div class="remix-grid">
+      
+      <div class="remix-card">
+        <div class="remix-label">🔥 Hot Remix</div>
+        <h3><a href="silence-john-summit-remix.html" style="color: inherit; text-decoration: none;">Silence (John Summit Remix)</a></h3>
+        <p class="remix-artist">Original: Delerium ft. Sarah McLachlan</p>
+        <div class="remix-meta">
+          <span>Jan 2026</span>
+          <span>Tech House</span>
+        </div>
+        <p style="margin-bottom: 1.5rem; font-size: 0.95rem;">John Summit transforms the iconic trance classic into a driving tech house anthem. The remix preserves Sarah McLachlan's haunting vocals while adding his signature pulsing bassline and hypnotic groove.</p>
+        <a class="yt-btn" href="#" target="_blank" rel="noopener">▶ Watch on YouTube</a>
+      </div>
+
+      <div class="remix-card">
+        <div class="remix-label">Classic Reimagined</div>
+        <h3><a href="i-wanna-go-john-summit-remix.html" style="color: inherit; text-decoration: none;">I Wanna Go (John Summit Remix)</a></h3>
+        <p class="remix-artist">Original: Britney Spears</p>
+        <div class="remix-meta">
+          <span>Dec 2025</span>
+          <span>Tech House</span>
+        </div>
+        <p style="margin-bottom: 1.5rem; font-size: 0.95rem;">After teasing for months, Summit finally released his take on the pop classic. The remix keeps Britney's iconic vocals intact while adding layers of driving percussion and festival-ready builds.</p>
+        <a class="yt-btn" href="#" target="_blank" rel="noopener">▶ Watch on YouTube</a>
+      </div>
+
+      <div class="remix-card">
+        <div class="remix-label">New Release</div>
+        <h3>Your Track Here</h3>
+        <p class="remix-artist">Original Artist Name</p>
+        <div class="remix-meta">
+          <span>Feb 2026</span>
+          <span>Genre</span>
+        </div>
+        <p style="margin-bottom: 1.5rem; font-size: 0.95rem;">Description of the remix goes here. Talk about how the remixer transformed the original, what elements they kept, what they changed, and why it works.</p>
+        <a class="yt-btn" href="#" target="_blank" rel="noopener">▶ Watch on YouTube</a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2026 OH IT'S GOOD // ALL RIGHTS RESERVED</p>
+  </footer>
+
+</body>
+</html>

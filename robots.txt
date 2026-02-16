@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ohitsgood.com/sitemap.xml
+
+# Block admin pages from search engines
+User-agent: *
+Disallow: /admin-login.html
+Disallow: /admin-dashboard.html
