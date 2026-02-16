@@ -1,9 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4EPC4XVSFY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4EPC4XVSFY');
+  </script>
+  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Oh It's Good — Music Blog</title>
+  
+  <!-- Primary Meta Tags -->
+  <title>Oh It's Good — EDM Music Blog | New Releases, Mixes & Festival News</title>
+  <meta name="title" content="Oh It's Good — EDM Music Blog | New Releases, Mixes & Festival News" />
+  <meta name="description" content="Your source for the latest EDM releases, DJ mixes, and electronic music news. Featuring tracks from John Summit, Alesso, FISHER, Mau P, and more. Updated weekly with fresh bangers." />
+  <meta name="keywords" content="EDM, electronic music, house music, techno, progressive house, tech house, DJ mixes, new music releases, festival news, John Summit, Alesso, FISHER, Mau P, music blog" />
+  <meta name="author" content="Oh It's Good" />
+  <link rel="canonical" href="https://ohitsgood.com/" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ohitsgood.com/" />
+  <meta property="og:title" content="Oh It's Good — EDM Music Blog | New Releases & Mixes" />
+  <meta property="og:description" content="Your source for the latest EDM releases, DJ mixes, and electronic music news. Featuring John Summit, Alesso, FISHER, and more." />
+  <meta property="og:image" content="https://ohitsgood.com/og-image.jpg" />
+  <meta property="og:site_name" content="Oh It's Good" />
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://ohitsgood.com/" />
+  <meta property="twitter:title" content="Oh It's Good — EDM Music Blog" />
+  <meta property="twitter:description" content="Latest EDM releases, DJ mixes, and electronic music news. Updated weekly." />
+  <meta property="twitter:image" content="https://ohitsgood.com/og-image.jpg" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  
+  <!-- Structured Data - Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Oh It's Good",
+    "url": "https://ohitsgood.com",
+    "description": "EDM music blog featuring new releases, DJ mixes, and electronic music news",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Oh It's Good",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://ohitsgood.com/logo.png"
+      }
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://ohitsgood.com/?s={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+  
+  <!-- Structured Data - Articles -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Oh It's Good",
+    "description": "Electronic dance music blog with weekly updates on new releases and DJ mixes",
+    "url": "https://ohitsgood.com",
+    "inLanguage": "en-US",
+    "blogPost": [
+      {
+        "@type": "BlogPosting",
+        "headline": "John Summit & LAVINIA - SHADOWS Review",
+        "datePublished": "2026-02-11",
+        "author": {
+          "@type": "Person",
+          "name": "Jade Orion"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Oh It's Good"
+        },
+        "genre": "Tech House",
+        "keywords": "John Summit, LAVINIA, SHADOWS, tech house, EDM"
+      }
+    ]
+  }
+  </script>
+  
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -579,22 +667,25 @@
     }
   </style>
 </head>
-<body>
+<body itemscope itemtype="https://schema.org/WebPage">
 
   <!-- NAV -->
-  <nav>
-    <a class="nav-logo" href="#">OH IT'S <span>GOOD</span></a>
+  <header>
+  <nav role="navigation" aria-label="Main navigation">
+    <a class="nav-logo" href="/" aria-label="Oh It's Good homepage">OH IT'S <span>GOOD</span></a>
     <ul class="nav-links">
       <li><a href="#">Features</a></li>
       <li><a href="mixes.html">Mixes</a></li>
       <li><a href="#">About</a></li>
     </ul>
   </nav>
+  </header>
 
   <!-- HERO -->
-  <section class="hero">
+  <main id="main-content" role="main">
+  <section class="hero" aria-label="Hero section">
     <div class="hero-bg"></div>
-    <svg class="hero-vinyl" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg class="hero-vinyl" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <circle cx="100" cy="100" r="99" stroke="white" stroke-width="0.5"/>
       <circle cx="100" cy="100" r="85" stroke="white" stroke-width="0.3"/>
       <circle cx="100" cy="100" r="70" stroke="white" stroke-width="0.3"/>
@@ -607,7 +698,7 @@
     <p class="hero-tag">// Your EDM Drop Zone</p>
     <h1 class="hero-title">OH IT'S<br/><em>GOOD</em></h1>
     <p class="hero-sub">The freshest EDM releases, reviews, and rave culture — straight from the dance floor to your feed.</p>
-    <div class="hero-scroll">
+    <div class="hero-scroll" aria-label="Scroll down">
       <div class="scroll-line"></div>
       <span>Scroll to explore</span>
     </div>
@@ -640,25 +731,25 @@
   </div>
 
   <!-- FEATURED POSTS -->
-  <section class="section">
+  <section class="section" id="featured" aria-label="Featured posts">
     <div class="section-header">
       <h2 class="section-title">Featured</h2>
-      <a class="section-link" href="#">All Features →</a>
+      <a class="section-link" href="#" aria-label="View all featured posts">All Features →</a>
     </div>
     <div class="featured-grid">
 
-      <div class="post-card large">
+      <article class="post-card large" itemscope itemtype="https://schema.org/BlogPosting">
         <div class="vinyl-label"></div>
         <div class="post-label">🔥 HOT NOW</div>
-        <h3 class="post-title">John Summit & LAVINIA — "SHADOWS" Is a Seductive Tech-House Escape Into The Night</h3>
-        <p class="post-excerpt">Released Feb 11th via Experts Only/Darkroom Records. The superstar DJ delivers his second single from upcoming album CTRL ESCAPE (April 15). Berlin-based LAVINIA's haunting vocals beckon listeners into a midnight drive through a city that never sleeps. At 138 BPM, the track pulses with anthemic energy — intimate yet mysterious, where existential questions meet four-on-the-floor beats. Summit transforms from accountant to mainstage architect, closing Ultra Miami's mainstage this March.</p>
+        <h3 class="post-title" itemprop="headline"><a href="john-summit-lavinia-shadows.html" style="color: inherit; text-decoration: none;">John Summit & LAVINIA — "SHADOWS" Is a Seductive Tech-House Escape Into The Night</a></h3>
+        <p class="post-excerpt" itemprop="description">Released Feb 11th via Experts Only/Darkroom Records. The superstar DJ delivers his second single from upcoming album CTRL ESCAPE (April 15). Berlin-based LAVINIA's haunting vocals beckon listeners into a midnight drive through a city that never sleeps. At 138 BPM, the track pulses with anthemic energy — intimate yet mysterious, where existential questions meet four-on-the-floor beats. Summit transforms from accountant to mainstage architect, closing Ultra Miami's mainstage this March.</p>
         <div class="post-meta">
-          <span>By Jade Orion</span>
-          <span>Feb 11, 2026</span>
+          <span itemprop="author" itemscope itemtype="https://schema.org/Person">By <span itemprop="name">Jade Orion</span></span>
+          <time itemprop="datePublished" datetime="2026-02-11">Feb 11, 2026</time>
           <span>8 min read</span>
         </div>
-        <a class="yt-btn" href="https://www.youtube.com/watch?v=TSZo2eZzD6s" target="_blank" rel="noopener">▶ Watch on YouTube</a>
-      </div>
+        <a class="yt-btn" href="https://www.youtube.com/watch?v=TSZo2eZzD6s" target="_blank" rel="noopener" aria-label="Watch John Summit SHADOWS on YouTube">▶ Watch on YouTube</a>
+      </article>
 
       <div class="post-card">
         <div class="post-label">🔥 NEW RELEASE</div>
@@ -745,25 +836,26 @@
   </section>
 
   <!-- NEWSLETTER -->
-  <div class="newsletter">
+  <section class="newsletter" aria-label="Newsletter signup">
     <div class="newsletter-text">
       <p class="eyebrow">// Weekly Drops</p>
       <h2>Stay in the Groove</h2>
       <p>Every Friday — new releases, festival news, and tracks we can't stop playing. No noise, just bangers.</p>
     </div>
     <div class="newsletter-form">
-      <form id="newsletterForm">
+      <form id="newsletterForm" aria-label="Newsletter subscription form">
         <div class="form-group">
-          <input type="email" id="emailInput" placeholder="your@email.com" required />
-          <button type="submit">Subscribe</button>
+          <input type="email" id="emailInput" placeholder="your@email.com" required aria-label="Email address" />
+          <button type="submit" aria-label="Subscribe to newsletter">Subscribe</button>
         </div>
         <p class="form-note" id="formNote">// No spam. Unsubscribe anytime. <span id="subscriberCount">~2,100</span> subscribers.</p>
       </form>
     </div>
-  </div>
+  </section>
+  </main>
 
   <!-- FOOTER -->
-  <footer>
+  <footer role="contentinfo">
     <div class="footer-logo">OH IT'S <span>GOOD</span></div>
     <p class="footer-copy">© 2026 Oh It's Good. Feel the music.</p>
     <ul class="footer-links">
