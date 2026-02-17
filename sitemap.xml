@@ -25,6 +25,24 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://ohitsgood.com/news.html</loc>
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://ohitsgood.com/edc-las-vegas-2026-lineup.html</loc>
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ohitsgood.com/sonar-barcelona-2026-lineup.html</loc>
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://ohitsgood.com/about.html</loc>
     <lastmod>2026-02-16</lastmod>
     <changefreq>monthly</changefreq>
