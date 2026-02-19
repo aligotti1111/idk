@@ -173,12 +173,13 @@
 
     /* HERO */
     .hero {
-      min-height: 50vh;
+      min-height: 25vh; /* Reduced from 50vh */
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
+      justify-content: center; /* Changed from flex-end */
       padding: 2.5rem;
-      padding-top: 6rem;
+      padding-top: 8rem; /* Adjusted for nav + ticker */
+      padding-bottom: 2rem;
       position: relative;
       overflow: hidden;
       border-bottom: 1px solid var(--border);
@@ -221,7 +222,7 @@
 
     .hero-title {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(5rem, 14vw, 13rem);
+      font-size: clamp(3.5rem, 10vw, 8rem); /* Reduced from 13rem */
       line-height: 0.9;
       letter-spacing: -0.01em;
       color: var(--white);
@@ -235,9 +236,9 @@
     }
 
     .hero-sub {
-      margin-top: 2rem;
+      margin-top: 1rem; /* Reduced from 2rem */
       max-width: 520px;
-      font-size: 1.15rem;
+      font-size: 1rem; /* Reduced from 1.15rem */
       line-height: 1.6;
       color: var(--gray);
       font-style: italic;
@@ -246,7 +247,7 @@
     }
 
     .hero-scroll {
-      margin-top: 3rem;
+      margin-top: 1.5rem; /* Reduced from 3rem */
       display: flex;
       align-items: center;
       gap: 1rem;
@@ -275,6 +276,11 @@
 
     /* TICKER */
     .ticker {
+      position: fixed;
+      top: 72px; /* Height of nav */
+      left: 0;
+      right: 0;
+      z-index: 99;
       overflow: hidden;
       border-bottom: 1px solid var(--border);
       padding: 0.75rem 0;
@@ -295,6 +301,21 @@
       text-transform: uppercase;
       color: var(--black);
       font-weight: 500;
+    }
+
+    .ticker-inner a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--black);
+      font-weight: 500;
+      text-decoration: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .ticker-inner a:hover {
+      opacity: 0.7;
     }
 
     @keyframes ticker {
@@ -339,7 +360,7 @@
     /* FEATURED GRID */
     .featured-grid {
       display: grid;
-      grid-template-columns: 1.4fr 1fr;
+      grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
       gap: 1px;
       background: var(--border);
     }
@@ -356,7 +377,7 @@
     .post-card:hover { background: #111; }
 
     .post-card.large {
-      grid-row: span 2;
+      grid-row: span 1; /* Changed from span 2 - all cards same size */
     }
 
     .post-label {
@@ -375,6 +396,13 @@
       letter-spacing: 0.02em;
       color: var(--white);
       margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .post-title a {
+      position: relative;
+      z-index: 2;
     }
 
     .post-excerpt {
@@ -383,6 +411,19 @@
       color: var(--gray);
       font-style: italic;
       margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .post-excerpt a {
+      color: var(--red);
+      text-decoration: none;
+      position: relative;
+      z-index: 2;
+    }
+
+    .post-excerpt a:hover {
+      text-decoration: underline;
     }
 
     .post-meta {
@@ -656,7 +697,7 @@
     @media (max-width: 768px) {
       nav { padding: 1rem 1.25rem; }
       .nav-links { display: none; }
-      .hero { padding: 1.5rem; padding-top: 5rem; }
+      .hero { padding: 1.5rem; padding-top: 9rem; } /* Adjusted for nav + ticker */
       .hero-vinyl { width: 300px; height: 300px; right: -80px; opacity: 0.08; }
       .section { padding: 3rem 1.25rem; }
       .featured-grid { grid-template-columns: 1fr; }
@@ -665,6 +706,11 @@
       .newsletter { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 1.25rem; }
       .list-item { grid-template-columns: 2rem 1fr auto; gap: 1rem; }
       footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+    }
+
+    /* Tablet: 2 columns */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .featured-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
@@ -683,6 +729,33 @@
       <li><a href="about.html">About</a></li>
     </ul>
   </nav>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker-inner">
+      <a href="gordo-reinier-zonneveld-loco-loco.html">🔥 NEW FRIDAY — GORDO x Reinier Zonneveld "Loco Loco" Out Now</a>
+      <span>★</span>
+      <a href="ahadadream-skrillex-bass-dhol.html">🔥 NEW FRIDAY — Skrillex & Ahadadream "Bass Dhol" ft. Raf-Saperra</a>
+      <span>★</span>
+      <a href="armin-van-buuren-maddix-mouth-go-lala.html">🔥 FRESH — Armin van Buuren & Maddix "Mouth Go Lala"</a>
+      <span>★</span>
+      <a href="don-diablo-bipolar-sunshine-more-than-a-friend.html">🔥 FRESH — Don Diablo x Bipolar Sunshine "More Than A Friend"</a>
+      <span>★</span>
+      <a href="gordo-reinier-zonneveld-loco-loco.html">Culture — Summer Track 2026 Predicted: "Loco Loco" Goes Viral</a>
+      <span>★</span>
+      <a href="gordo-reinier-zonneveld-loco-loco.html">🔥 NEW FRIDAY — GORDO x Reinier Zonneveld "Loco Loco" Out Now</a>
+      <span>★</span>
+      <a href="ahadadream-skrillex-bass-dhol.html">🔥 NEW FRIDAY — Skrillex & Ahadadream "Bass Dhol" ft. Raf-Saperra</a>
+      <span>★</span>
+      <a href="armin-van-buuren-maddix-mouth-go-lala.html">🔥 FRESH — Armin van Buuren & Maddix "Mouth Go Lala"</a>
+      <span>★</span>
+      <a href="don-diablo-bipolar-sunshine-more-than-a-friend.html">🔥 FRESH — Don Diablo x Bipolar Sunshine "More Than A Friend"</a>
+      <span>★</span>
+      <a href="gordo-reinier-zonneveld-loco-loco.html">Culture — Summer Track 2026 Predicted: "Loco Loco" Goes Viral</a>
+      <span>★</span>
+    </div>
+  </div>
+
   </header>
 
   <!-- HERO -->
@@ -708,37 +781,10 @@
     </div>
   </section>
 
-  <!-- TICKER -->
-  <div class="ticker">
-    <div class="ticker-inner">
-      <span>🔥 NEW FRIDAY — GORDO x Reinier Zonneveld "Loco Loco" Out Now</span>
-      <span>★</span>
-      <span>🔥 NEW FRIDAY — Skrillex & Ahadadream "Bass Dhol" ft. Raf-Saperra</span>
-      <span>★</span>
-      <span>🔥 FRESH — Armin van Buuren & Maddix "Mouth Go Lala"</span>
-      <span>★</span>
-      <span>🔥 FRESH — Don Diablo x Bipolar Sunshine "More Than A Friend"</span>
-      <span>★</span>
-      <span>Culture — Summer Track 2026 Predicted: "Loco Loco" Goes Viral</span>
-      <span>★</span>
-      <span>🔥 NEW FRIDAY — GORDO x Reinier Zonneveld "Loco Loco" Out Now</span>
-      <span>★</span>
-      <span>🔥 NEW FRIDAY — Skrillex & Ahadadream "Bass Dhol" ft. Raf-Saperra</span>
-      <span>★</span>
-      <span>🔥 FRESH — Armin van Buuren & Maddix "Mouth Go Lala"</span>
-      <span>★</span>
-      <span>🔥 FRESH — Don Diablo x Bipolar Sunshine "More Than A Friend"</span>
-      <span>★</span>
-      <span>Culture — Summer Track 2026 Predicted: "Loco Loco" Goes Viral</span>
-      <span>★</span>
-    </div>
-  </div>
-
   <!-- FEATURED POSTS -->
-  <section class="section" id="featured" aria-label="Featured posts">
+  <section class="section" id="featured" aria-label="New music posts">
     <div class="section-header">
-      <h2 class="section-title">Featured</h2>
-      <a class="section-link" href="#" aria-label="View all featured posts">All Features →</a>
+      <h2 class="section-title">New Music</h2>
     </div>
     <div class="featured-grid">
 
@@ -746,119 +792,152 @@
         <div class="vinyl-label"></div>
         <div class="post-label">🔥 HOT NOW</div>
         <h3 class="post-title" itemprop="headline"><a href="john-summit-lavinia-shadows.html" style="color: inherit; text-decoration: none;">John Summit & LAVINIA — "SHADOWS" Is a Seductive Tech-House Escape Into The Night</a></h3>
-        <p class="post-excerpt" itemprop="description">Released Feb 11th via Experts Only/Darkroom Records. The superstar DJ delivers his second single from upcoming album CTRL ESCAPE (April 15). Berlin-based LAVINIA's haunting vocals beckon listeners into a midnight drive through a city that never sleeps. At 138 BPM, the track pulses with anthemic energy — intimate yet mysterious, where existential questions meet four-on-the-floor beats. Summit transforms from accountant to mainstage architect, closing Ultra Miami's mainstage this March.</p>
+        <p class="post-excerpt" itemprop="description">Released Feb 11th via Experts Only/Darkroom Records, the superstar DJ delivers his second single from upcoming album CTRL ESCAPE (April 15) with Berlin-based LAVINIA's haunting vocals. <a href="john-summit-lavinia-shadows.html">Read more...</a></p>
         <div class="post-meta">
           <span itemprop="author" itemscope itemtype="https://schema.org/Person">By <span itemprop="name">Jade Orion</span></span>
           <time itemprop="datePublished" datetime="2026-02-11">Feb 11, 2026</time>
-          <span>8 min read</span>
         </div>
         <a class="yt-btn" href="https://www.youtube.com/watch?v=TSZo2eZzD6s" target="_blank" rel="noopener" aria-label="Watch John Summit SHADOWS on YouTube">▶ Watch on YouTube</a>
       </article>
 
       <div class="post-card">
         <div class="post-label">🔥 NEW RELEASE</div>
-        <h3 class="post-title"><a href="fisher-rain.html" style="color: inherit; text-decoration: none;">FISHER — "Rain" Delivers Peak-Time Tech House Energy</a></h3>
-        <p class="post-excerpt">Out Feb 6th via Catch & Release. Australian powerhouse FISHER drops a dancefloor essential built around a rolling groove and hypnotic vocal hook. The track features a strutting bassline with subtle disco influences and a falsetto shimmer that glides over warm reverb. Already tested at his history-making 40,000-person Moscone Center show, this one's designed for long summer nights and hands-in-the-air moments.</p>
+        <h3 class="post-title"><a href="armin-van-buuren-maddix-mouth-go-lala.html" style="color: inherit; text-decoration: none;">Armin van Buuren & Maddix — "Mouth Go Lala"</a></h3>
+        <p class="post-excerpt">Their first original collaboration debuted at ASOT Rotterdam 2025, combining trance emotion with techno pressure at 150 BPM. <a href="armin-van-buuren-maddix-mouth-go-lala.html">Read more...</a></p>
         <div class="post-meta">
-          <span>By Milo Tress</span>
-          <span>Feb 6, 2026</span>
-          <span>6 min read</span>
+          <span>By Jade Orion</span>
+          <span>Feb 13, 2026</span>
         </div>
-        <a class="yt-btn" href="https://youtube.com/watch?v=v6IgGAIXBaE" target="_blank" rel="noopener">▶ Watch on YouTube</a>
+        <a class="yt-btn" href="armin-van-buuren-maddix-mouth-go-lala.html">▶ Listen Now</a>
       </div>
 
       <div class="post-card">
         <div class="post-label">🔥 VIRAL HIT</div>
-        <h3 class="post-title"><a href="gordo-reinier-zonneveld-loco-loco.html" style="color: inherit; text-decoration: none;">GORDO x Reinier Zonneveld — "Loco Loco" Is 2026's First Viral Festival Weapon</a></h3>
-        <p class="post-excerpt">Out Feb 13th via Spinnin' Records. The mystery ID that broke the internet. After generating 10,000+ Instagram Reels before anyone knew who made it, GORDO and Reinier Zonneveld finally revealed their collaboration. A high-voltage hybrid blending tech house grooves with driving techno intensity, engineered for festival main stages and already supported by Adriatique, Vintage Culture, and MEDUZA worldwide.</p>
+        <h3 class="post-title"><a href="gordo-reinier-zonneveld-loco-loco.html" style="color: inherit; text-decoration: none;">GORDO x Reinier Zonneveld — "Loco Loco"</a></h3>
+        <p class="post-excerpt">After generating 10,000+ Instagram Reels before anyone knew who made it, the mystery ID is finally revealed as 2026's first viral festival weapon. <a href="gordo-reinier-zonneveld-loco-loco.html">Read more...</a></p>
         <div class="post-meta">
           <span>By Jade Orion</span>
           <span>Feb 13, 2026</span>
-          <span>7 min read</span>
         </div>
         <a class="yt-btn" href="gordo-reinier-zonneveld-loco-loco.html">▶ Listen Now</a>
       </div>
 
+    </div>
+  </section>
+
+  <!-- NEWS -->
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">News</h2>
+      <a class="section-link" href="news.html">All News →</a>
+    </div>
+    <div class="featured-grid">
       <div class="post-card">
-        <div class="post-label">🔥 NEW RELEASE</div>
-        <h3 class="post-title"><a href="mau-p-neck.html" style="color: inherit; text-decoration: none;">Mau P — "neck" Returns to Black Book Records With Minimal Tech House Fire</a></h3>
-        <p class="post-excerpt">Out Feb 6th via Black Book Records. First introduced during his Sahara Tent headline at Coachella 2025, "neck" has been refined and road-tested for months. The track pairs Mau P's signature gritty basslines with playful vocal hooks in a rhythm-forward minimal tech house cut. A bold return to the label where he made early waves with "Dress Code" — this one's built for pure dancefloor impact.</p>
+        <div class="post-label">🤠 Festival News</div>
+        <h3 class="post-title"><a href="diplo-honkytonk-stagecoach-2026.html" style="color: inherit; text-decoration: none;">Diplo's HonkyTonk Returns to Stagecoach 2026</a></h3>
+        <p class="post-excerpt">Fourth year for the legendary tent with Dillstradamus, Marshmello, Emo Nite ft. Ashlee Simpson, and more hitting Stagecoach April 24-26. <a href="diplo-honkytonk-stagecoach-2026.html">Read more...</a></p>
         <div class="post-meta">
-          <span>By Rae Volta</span>
+          <span>Feb 18, 2026</span>
+        </div>
+        <a class="yt-btn" href="diplo-honkytonk-stagecoach-2026.html">Read More →</a>
+      </div>
+
+      <div class="post-card">
+        <div class="post-label">🎤 Major Tour</div>
+        <h3 class="post-title"><a href="rufus-du-sol-2026-north-american-tour.html" style="color: inherit; text-decoration: none;">RÜFÜS DU SOL Announces Biggest North American Tour Ever</a></h3>
+        <p class="post-excerpt">24-date summer stadium run hitting Madison Square Garden, Wrigley Field, Fenway Park, and The Gorge—electronic music history in the making. <a href="rufus-du-sol-2026-north-american-tour.html">Read more...</a></p>
+        <div class="post-meta">
+          <span>Feb 17, 2026</span>
+        </div>
+        <a class="yt-btn" href="rufus-du-sol-2026-north-american-tour.html">Read More →</a>
+      </div>
+
+      <div class="post-card">
+        <div class="post-label">🎪 Festival Lineup</div>
+        <h3 class="post-title"><a href="edc-las-vegas-2026-lineup.html" style="color: inherit; text-decoration: none;">EDC Las Vegas 2026 Celebrates 30th Anniversary</a></h3>
+        <p class="post-excerpt">May 16-18 with Alesso, Armin van Buuren, Subtronics, John Summit, Excision, Kaskade, and over 200 artists across 9 stages at Las Vegas Motor Speedway. <a href="edc-las-vegas-2026-lineup.html">Read more...</a></p>
+        <div class="post-meta">
+          <span>Feb 15, 2026</span>
+        </div>
+        <a class="yt-btn" href="edc-las-vegas-2026-lineup.html">Read More →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- REMIXES -->
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Remixes</h2>
+      <a class="section-link" href="remixes.html">All Remixes →</a>
+    </div>
+    <div class="featured-grid">
+      <div class="post-card">
+        <div class="post-label">✨ Official Remix</div>
+        <h3 class="post-title"><a href="opalite-chris-lake-remix.html" style="color: inherit; text-decoration: none;">Taylor Swift — "Opalite" (Chris Lake Remix)</a></h3>
+        <p class="post-excerpt">Travis Kelce DM'd Chris Lake after listening with Taylor, and the tech house remix hit #1 on iTunes immediately. <a href="opalite-chris-lake-remix.html">Read more...</a></p>
+        <div class="post-meta">
+          <span>Feb 16, 2026</span>
+        </div>
+        <a class="yt-btn" href="opalite-chris-lake-remix.html">▶ Listen Now</a>
+      </div>
+
+      <div class="post-card">
+        <div class="post-label">🔥 Hot Remix</div>
+        <h3 class="post-title"><a href="silence-john-summit-remix.html" style="color: inherit; text-decoration: none;">Delerium — "Silence" (John Summit Remix)</a></h3>
+        <p class="post-excerpt">John Summit transforms the 1999 trance classic into a driving tech house weapon that respects the original's emotional weight. <a href="silence-john-summit-remix.html">Read more...</a></p>
+        <div class="post-meta">
+          <span>Feb 15, 2026</span>
+        </div>
+        <a class="yt-btn" href="silence-john-summit-remix.html">▶ Listen Now</a>
+      </div>
+
+      <div class="post-card">
+        <div class="post-label">🔥 Bass House</div>
+        <h3 class="post-title"><a href="run-it-cheyenne-giles-kling-remix.html" style="color: inherit; text-decoration: none;">Chris Brown — "Run It" (Cheyenne Giles x KLING)</a></h3>
+        <p class="post-excerpt">First-ever collaboration transforms Chris Brown's 2005 R&B classic into a bass house weapon with crazy sound design. <a href="run-it-cheyenne-giles-kling-remix.html">Read more...</a></p>
+        <div class="post-meta">
           <span>Feb 6, 2026</span>
-          <span>5 min read</span>
         </div>
-        <a class="yt-btn" href="https://www.youtube.com/watch?v=jbRqcAtQDaw" target="_blank" rel="noopener">▶ Watch on YouTube</a>
+        <a class="yt-btn" href="run-it-cheyenne-giles-kling-remix.html">▶ Listen Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MIXES -->
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Mixes</h2>
+      <a class="section-link" href="mixes.html">All Mixes →</a>
+    </div>
+    <div class="featured-grid">
+      <div class="post-card">
+        <div class="post-label">🎧 DJ Mix</div>
+        <h3 class="post-title"><a href="kshmr-jai-waterhouse-its-a-party-ep39.html" style="color: inherit; text-decoration: none;">It's A Party EP.39 — KSHMR x Jai Waterhouse</a></h3>
+        <p class="post-excerpt">60-minute mix on Radio Metro featuring KSHMR (The Cataracs, "Like a G6" producer) taking over the second half with big room and techno energy. <a href="kshmr-jai-waterhouse-its-a-party-ep39.html">Read more...</a></p>
+        <div class="post-meta">
+          <span>Dec 2025</span>
+        </div>
+        <a class="yt-btn" href="kshmr-jai-waterhouse-its-a-party-ep39.html">▶ Listen Now</a>
       </div>
 
       <div class="post-card">
-        <div class="post-label">🔥 CULTURAL</div>
-        <h3 class="post-title"><a href="ahadadream-skrillex-bass-dhol.html" style="color: inherit; text-decoration: none;">Ahadadream, Skrillex & Raf-Saperra — "Bass Dhol" Fuses Punjabi Rhythms With Peak-Time Club Energy</a></h3>
-        <p class="post-excerpt">Out Feb 13th via Astralwerks. Three years in the making, this collaboration blends traditional Punjabi dhol drums with driving electronic production and chest-rattling basslines. Following their viral "TAKA" success, Ahadadream and Skrillex deliver a cultural statement that doesn't compromise its identity for dancefloor accessibility. Already supported by Fred again.., Four Tet, and Pete Tong.</p>
+        <div class="post-label">🎧 DJ Mix</div>
+        <h3 class="post-title"><a href="2025-send-off-mix-ligotti.html" style="color: inherit; text-decoration: none;">2025 Send-Off Mix — Ligotti</a></h3>
+        <p class="post-excerpt">90-minute journey through house and tech house to close out 2025 in style with peak-time energy and dancefloor moments. <a href="2025-send-off-mix-ligotti.html">Read more...</a></p>
         <div class="post-meta">
-          <span>By Jade Orion</span>
-          <span>Feb 13, 2026</span>
-          <span>6 min read</span>
+          <span>Dec 2025</span>
         </div>
-        <a class="yt-btn" href="ahadadream-skrillex-bass-dhol.html">▶ Listen Now</a>
+        <a class="yt-btn" href="2025-send-off-mix-ligotti.html">▶ Listen Now</a>
       </div>
 
-    </div>
-  </section>
-
-  <!-- LATEST POSTS LIST -->
-  <section class="section">
-    <div class="section-header">
-      <h2 class="section-title">Latest</h2>
-      <a class="section-link" href="#">Archive →</a>
-    </div>
-    <div class="posts-list">
-      <div class="list-item">
-        <span class="list-num">01</span>
-        <div class="list-content">
-          <div class="list-cat">Progressive House</div>
-          <div class="list-title"><a href="alesso-pendulum-fade.html" style="color: inherit; text-decoration: none;">Alesso & Pendulum — "FADE"</a> (Feb 6, 2026 · Capitol/EMI)</div>
-          <div class="list-date">Feb 6, 2026</div>
+      <div class="post-card">
+        <div class="post-label">🎧 DJ Mix</div>
+        <h3 class="post-title"><a href="dj-arman-aveiru-episode-010.html" style="color: inherit; text-decoration: none;">Digital Music Pool Radio Episode 010 — DJ Arman Aveiru</a></h3>
+        <p class="post-excerpt">60-minute episode blending house, techno, and bass with tracks from Dom Dolla, Fisher, John Summit, and underground gems. <a href="dj-arman-aveiru-episode-010.html">Read more...</a></p>
+        <div class="post-meta">
+          <span>Dec 2024</span>
         </div>
-        <a class="list-arrow" href="https://www.youtube.com/watch?v=dyNV5WGKJS8" target="_blank" rel="noopener">▶</a>
-      </div>
-      <div class="list-item">
-        <span class="list-num">02</span>
-        <div class="list-content">
-          <div class="list-cat">House / Techno</div>
-          <div class="list-title"><a href="dj-tennis-ashee-i-wanna-know.html" style="color: inherit; text-decoration: none;">DJ Tennis & Ashee — "I Wanna Know"</a> (Feb 13, 2026 · fabric Records)</div>
-          <div class="list-date">Feb 13, 2026</div>
-        </div>
-        <a class="list-arrow" href="https://www.youtube.com/watch?v=nSDnKBB_pa8" target="_blank" rel="noopener">▶</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CATEGORIES -->
-  <section class="section">
-    <div class="section-header">
-      <h2 class="section-title">Browse by Topic</h2>
-    </div>
-    <div class="cats-grid">
-      <div class="cat-card">
-        <span class="cat-icon">🎧</span>
-        <div class="cat-name">Reviews</div>
-        <div class="cat-count">156 posts</div>
-      </div>
-      <div class="cat-card">
-        <span class="cat-icon">🎤</span>
-        <div class="cat-name">Interviews</div>
-        <div class="cat-count">72 posts</div>
-      </div>
-      <div class="cat-card">
-        <span class="cat-icon">🔊</span>
-        <div class="cat-name">New Drops</div>
-        <div class="cat-count">189 posts</div>
-      </div>
-      <div class="cat-card">
-        <span class="cat-icon">🌍</span>
-        <div class="cat-name">Culture</div>
-        <div class="cat-count">104 posts</div>
+        <a class="yt-btn" href="dj-arman-aveiru-episode-010.html">▶ Listen Now</a>
       </div>
     </div>
   </section>
