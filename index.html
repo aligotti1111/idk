@@ -13,6 +13,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
+  <!-- DNS Prefetch for Performance -->
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+  
   <!-- Primary Meta Tags -->
   <title>Oh It's Good — EDM Music Blog | New Releases, Mixes & Festival News</title>
   <meta name="title" content="Oh It's Good — EDM Music Blog | New Releases, Mixes & Festival News" />
@@ -39,6 +44,11 @@
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="alternate icon" type="image/x-icon" href="/favicon.ico" />
+  
+  <!-- Preconnect for Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://www.googletagmanager.com" />
   
   <!-- Structured Data - Organization -->
   <script type="application/ld+json">
@@ -93,7 +103,6 @@
   }
   </script>
   
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -112,8 +121,10 @@
     body {
       background: var(--black);
       color: var(--white);
-      font-family: 'DM Serif Display', serif;
+      font-family: 'DM Serif Display', Georgia, serif;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     /* GRAIN OVERLAY */
@@ -144,11 +155,12 @@
     }
 
     .nav-logo {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'Bebas Neue', 'Arial Black', 'Arial Bold', Impact, sans-serif;
       font-size: 1.6rem;
       letter-spacing: 0.08em;
       color: var(--white);
       text-decoration: none;
+      font-weight: 700;
     }
 
     .nav-logo span { color: var(--red); }
@@ -202,6 +214,8 @@
       height: 520px;
       opacity: 0.15;
       animation: spin 30s linear infinite;
+      will-change: transform;
+      backface-visibility: hidden;
     }
 
     @keyframes spin {
@@ -221,13 +235,14 @@
     }
 
     .hero-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(3.5rem, 10vw, 8rem); /* Reduced from 13rem */
+      font-family: 'Bebas Neue', 'Arial Black', 'Arial Bold', Impact, sans-serif;
+      font-size: clamp(3.5rem, 10vw, 8rem);
       line-height: 0.9;
       letter-spacing: -0.01em;
       color: var(--white);
       opacity: 0;
       animation: fadeUp 0.8s ease forwards 0.4s;
+      font-weight: 700;
     }
 
     .hero-title em {
@@ -292,6 +307,8 @@
       gap: 3rem;
       animation: ticker 18s linear infinite;
       white-space: nowrap;
+      will-change: transform;
+      backface-visibility: hidden;
     }
 
     .ticker-inner span {
@@ -327,6 +344,8 @@
     .section {
       padding: 5rem 2.5rem;
       border-bottom: 1px solid var(--border);
+      content-visibility: auto;
+      contain-intrinsic-size: auto 500px;
     }
 
     .section-header {
@@ -337,10 +356,11 @@
     }
 
     .section-title {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'Bebas Neue', 'Arial Black', 'Arial Bold', Impact, sans-serif;
       font-size: 2.8rem;
       letter-spacing: 0.05em;
       color: var(--white);
+      font-weight: 700;
     }
 
     .section-link {
@@ -390,7 +410,7 @@
     }
 
     .post-title {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: 'Bebas Neue', 'Arial Black', 'Arial Bold', Impact, sans-serif;
       font-size: 2rem;
       line-height: 1.15;
       letter-spacing: 0.02em;
@@ -398,6 +418,7 @@
       margin-bottom: 1.5rem;
       position: relative;
       z-index: 2;
+      font-weight: 700;
     }
 
     .post-title a {
@@ -1035,6 +1056,16 @@
     
     // Initialize count on page load
     updateSubscriberCount();
+  </script>
+
+  <!-- Load Google Fonts Asynchronously (Non-Blocking) -->
+  <script>
+    (function() {
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap';
+      document.head.appendChild(link);
+    })();
   </script>
 
 </body>
