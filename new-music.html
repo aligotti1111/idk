@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4EPC4XVSFY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4EPC4XVSFY');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Music | Oh It's Good</title>
+  <meta name="description" content="All new EDM releases reviewed on Oh It's Good. Tech house, progressive house, club music and more." />
+  <meta name="keywords" content="new EDM releases, tech house, house music, new music 2026, EDM reviews" />
+  <link rel="canonical" href="https://ohitsgood.com/new-music.html" />
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="alternate icon" type="image/x-icon" href="/favicon.ico" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a;
+      --white: #f5f2ec;
+      --red: #d63a2f;
+      --gray: #888;
+      --border: #2a2a2a;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'DM Serif Display', serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.35;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 2.5rem;
+      border-bottom: 1px solid var(--border);
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--red); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--white); }
+
+    .page-header {
+      padding: 8rem 2.5rem 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 2rem;
+    }
+
+    .page-header h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 5rem;
+      letter-spacing: 0.05em;
+      line-height: 1;
+    }
+
+    .page-header p {
+      font-size: 1rem;
+      color: var(--gray);
+      font-style: italic;
+      max-width: 400px;
+      text-align: right;
+    }
+
+    .content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2.5rem;
+    }
+
+    /* Filter bar */
+    .filter-bar {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--gray);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--red);
+      border-color: var(--red);
+      color: var(--white);
+    }
+
+    /* Grid */
+    .music-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+    }
+
+    .music-card {
+      background: var(--black);
+      padding: 2.5rem;
+      transition: background 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .music-card:hover { background: #111; }
+
+    .card-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1.25rem;
+    }
+
+    .card-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      letter-spacing: 0.02em;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+      flex: 1;
+    }
+
+    .card-title a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .card-title a:hover { color: var(--red); }
+
+    .card-excerpt {
+      font-size: 0.9rem;
+      color: var(--gray);
+      font-style: italic;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .card-meta {
+      display: flex;
+      gap: 1.5rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      color: #444;
+      margin-top: auto;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 2.5rem;
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--gray);
+    }
+
+    @media (max-width: 1024px) {
+      .music-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.25rem; }
+      .nav-links { display: none; }
+      .page-header { padding: 6rem 1.5rem 2rem; }
+      .page-header h1 { font-size: 3rem; }
+      .page-header-inner { flex-direction: column; align-items: flex-start; }
+      .page-header p { text-align: left; }
+      .content { padding: 2rem 1.5rem; }
+      .music-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav role="navigation" aria-label="Main navigation">
+    <a class="nav-logo" href="index.html">OH IT'S <span>GOOD</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">New Music</a></li>
+      <li><a href="remixes.html">Remixes</a></li>
+      <li><a href="mashups.html">Mashups</a></li>
+      <li><a href="mixes.html">Mixes</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-header">
+    <div class="page-header-inner">
+      <h1>New Music</h1>
+      <p>Every new release we've reviewed — sorted newest first.</p>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <div class="music-grid">
+
+      <div class="music-card">
+        <div class="card-label">🔥 Progressive House</div>
+        <h2 class="card-title"><a href="tiesto-brieanna-grace-beautiful-places.html">Tiësto & Brieanna Grace — "Beautiful Places"</a></h2>
+        <p class="card-excerpt">Tiësto returns to his trance roots with soaring vocals from Brieanna Grace, delivering a festival-ready progressive house anthem.</p>
+        <div class="card-meta">
+          <span>Feb 20, 2026</span>
+          <span>Progressive House</span>
+        </div>
+      </div>
+
+      <div class="music-card">
+        <div class="card-label">🌴 Melodic House</div>
+        <h2 class="card-title"><a href="kygo-khalid-gryffin-save-my-love.html">Kygo, Khalid & Gryffin — "Save My Love"</a></h2>
+        <p class="card-excerpt">Tropical warmth meets R&B soul meets melodic house. Three distinct producers find common ground in one effortlessly beautiful collab.</p>
+        <div class="card-meta">
+          <span>Feb 20, 2026</span>
+          <span>Melodic House</span>
+        </div>
+      </div>
+
+      <div class="music-card">
+        <div class="card-label">🕺 Club House</div>
+        <h2 class="card-title"><a href="pnau-meduza-rollin.html">PNAU & MEDUZA — "Rollin'"</a></h2>
+        <p class="card-excerpt">Australian electronic legends meet Italian house titans in a groove-driven club weapon that locks in and doesn't let go.</p>
+        <div class="card-meta">
+          <span>Feb 20, 2026</span>
+          <span>House</span>
+        </div>
+      </div>
+
+      <div class="music-card">
+        <div class="card-label">🔥 Tech House × Techno</div>
+        <h2 class="card-title"><a href="gordo-reinier-zonneveld-loco-loco.html">GORDO x Reinier Zonneveld — "Loco Loco"</a></h2>
+        <p class="card-excerpt">The mystery ID that broke the internet — 10,000+ Instagram Reels before anyone knew who made it. 2026's first viral festival weapon.</p>
+        <div class="card-meta">
+          <span>Feb 13, 2026</span>
+          <span>Tech House / Techno</span>
+        </div>
+      </div>
+
+      <div class="music-card">
+        <div class="card-label">🔥 Tech House</div>
+        <h2 class="card-title"><a href="john-summit-lavinia-shadows.html">John Summit & LAVINIA — "SHADOWS"</a></h2>
+        <p class="card-excerpt">138 BPM of seductive tech house from CTRL ESCAPE. Berlin-based LAVINIA's haunting vocals pull you into a midnight you won't want to leave.</p>
+        <div class="card-meta">
+          <span>Feb 11, 2026</span>
+          <span>Tech House</span>
+        </div>
+      </div>
+
+      <div class="music-card">
+        <div class="card-label">🔥 Tech House</div>
+        <h2 class="card-title"><a href="fisher-rain.html">FISHER — "Rain"</a></h2>
+        <p class="card-excerpt">Peak-time tech house energy with hypnotic grooves and falsetto shimmer. FISHER doing what FISHER does best.</p>
+        <div class="card-meta">
+          <span>Feb 6, 2026</span>
+          <span>Tech House</span>
+        </div>
+      </div>
+
+      <div class="music-card">
+        <div class="card-label">Minimal Tech House</div>
+        <h2 class="card-title"><a href="mau-p-neck.html">Mau P — "neck"</a></h2>
+        <p class="card-excerpt">First played at Coachella 2025's Sahara Tent, now road-tested and refined. Gritty basslines, playful vocal hooks, zero fat.</p>
+        <div class="card-meta">
+          <span>Feb 6, 2026</span>
+          <span>Minimal Tech House</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2026 OH IT'S GOOD // ALL RIGHTS RESERVED</p>
+  </footer>
+
+</body>
+</html>
