@@ -289,6 +289,44 @@
       transform: translateY(1px);
     }
 
+    /* SUCCESS MESSAGE */
+    .success-message {
+      background: rgba(46, 213, 115, 0.1);
+      border-left: 3px solid #2ed573;
+      padding: 2rem;
+      margin-bottom: 3rem;
+      border-radius: 4px;
+    }
+
+    .success-message h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      color: #2ed573;
+      margin-bottom: 0.5rem;
+    }
+
+    .success-message p {
+      color: var(--gray);
+      font-size: 1.1rem;
+    }
+
+    .email-backup {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: rgba(245, 242, 236, 0.03);
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .email-backup p {
+      margin: 0;
+      color: var(--gray);
+    }
+
+    .email-backup .email-link {
+      font-size: 1rem;
+    }
+
     /* FOOTER */
     footer {
       border-top: 1px solid var(--border);
@@ -340,16 +378,21 @@
     <h1 class="page-title">Get In <em>Touch</em></h1>
     <p class="intro">Whether you're an artist with a fresh drop, a label with a release, or just want to say what's up — we're here for it.</p>
 
+    <!-- Success Message -->
+    <div id="successMessage" class="success-message" style="display:none;">
+      <h3>✓ Message Sent!</h3>
+      <p>Thanks for reaching out. We'll get back to you soon.</p>
+    </div>
+
     <!-- CONTACT FORM -->
     <section class="contact-section">
       <div class="section-label">// Send Us A Message</div>
       <h2 class="section-title">Contact Form</h2>
       
       <form id="contactForm" class="contact-form" action="https://formsubmit.co/ohitsgoodmusic@gmail.com" method="POST">
-        <!-- Hidden fields for FormSubmit configuration -->
-        <input type="hidden" name="_subject" value="New Contact Form Submission - Oh It's Good">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="box">
+        <input type="hidden" name="_subject" value="Oh It's Good - Contact Form">
+        <input type="hidden" name="_next" value="https://ohitsgood.com/contact.html?submitted=true">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
         
         <!-- Name Field -->
         <div class="form-group">
@@ -395,6 +438,10 @@
           <li>Press photos or promotional materials (if available)</li>
         </ul>
       </div>
+
+      <div class="email-backup">
+        <p><strong>Form not working?</strong> Email us directly at <a href="mailto:ohitsgoodmusic@gmail.com" class="email-link">ohitsgoodmusic@gmail.com</a></p>
+      </div>
     </section>
   </main>
 
@@ -406,5 +453,16 @@
       <a href="contact.html">Contact</a>
     </p>
   </footer>
+
+  <script>
+    // Check if form was successfully submitted
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('submitted') === 'true') {
+      document.getElementById('successMessage').style.display = 'block';
+      document.getElementById('contactForm').style.display = 'none';
+      // Remove parameter from URL
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+  </script>
 </body>
 </html>
