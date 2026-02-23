@@ -389,12 +389,33 @@
       background: var(--black);
       padding: 2.5rem;
       cursor: pointer;
-      transition: background 0.3s;
+      transition: all 0.3s;
       position: relative;
       overflow: hidden;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
     }
 
-    .post-card:hover { background: #111; }
+    .post-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(10,10,10,0.88) 0%, rgba(10,10,10,0.94) 100%);
+      z-index: 1;
+      transition: background 0.3s;
+    }
+
+    .post-card:hover::before {
+      background: linear-gradient(to bottom, rgba(10,10,10,0.80) 0%, rgba(10,10,10,0.90) 100%);
+    }
+
+    .post-card > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    .post-card:hover { transform: translateY(-2px); }
 
     .post-card.large {
       grid-row: span 1; /* Changed from span 2 - all cards same size */
@@ -810,7 +831,7 @@
     </div>
     <div class="featured-grid">
 
-      <article class="post-card large" itemscope itemtype="https://schema.org/BlogPosting">
+      <article class="post-card large" itemscope itemtype="https://schema.org/BlogPosting" style="background-image: url('john-summit-shadows-artwork-correct.jpg');">
         <div class="vinyl-label"></div>
         <div class="post-label">🔥 HOT NOW</div>
         <h3 class="post-title" itemprop="headline"><a href="john-summit-lavinia-shadows.html" style="color: inherit; text-decoration: none;">John Summit & LAVINIA — "SHADOWS" Is a Seductive Tech-House Escape Into The Night</a></h3>
@@ -822,7 +843,7 @@
         <a class="yt-btn" href="https://www.youtube.com/watch?v=TSZo2eZzD6s" target="_blank" rel="noopener" aria-label="Watch John Summit SHADOWS on YouTube">▶ Watch on YouTube</a>
       </article>
 
-      <div class="post-card">
+      <div class="post-card" style="background-image: url('armin-maddix-mouth-go-lala-artwork.jpg');">
         <div class="post-label">🔥 NEW RELEASE</div>
         <h3 class="post-title"><a href="armin-van-buuren-maddix-mouth-go-lala.html" style="color: inherit; text-decoration: none;">Armin van Buuren & Maddix — "Mouth Go Lala"</a></h3>
         <p class="post-excerpt">Their first original collaboration debuted at ASOT Rotterdam 2025, combining trance emotion with techno pressure at 150 BPM. <a href="armin-van-buuren-maddix-mouth-go-lala.html">Read more...</a></p>
@@ -833,7 +854,7 @@
         <a class="yt-btn" href="armin-van-buuren-maddix-mouth-go-lala.html">▶ Listen Now</a>
       </div>
 
-      <div class="post-card">
+      <div class="post-card" style="background-image: url('gordo-loco-loco-artwork.jpg');">
         <div class="post-label">🔥 VIRAL HIT</div>
         <h3 class="post-title"><a href="gordo-reinier-zonneveld-loco-loco.html" style="color: inherit; text-decoration: none;">GORDO x Reinier Zonneveld — "Loco Loco"</a></h3>
         <p class="post-excerpt">After generating 10,000+ Instagram Reels before anyone knew who made it, the mystery ID is finally revealed as 2026's first viral festival weapon. <a href="gordo-reinier-zonneveld-loco-loco.html">Read more...</a></p>
@@ -893,7 +914,7 @@
       <a class="section-link" href="remixes.html">All Remixes →</a>
     </div>
     <div class="featured-grid">
-      <div class="post-card">
+      <div class="post-card" style="background-image: url('taylor-swift-opalite-artwork.jpg');">
         <div class="post-label">✨ Official Remix</div>
         <h3 class="post-title"><a href="opalite-chris-lake-remix.html" style="color: inherit; text-decoration: none;">Taylor Swift — "Opalite" (Chris Lake Remix)</a></h3>
         <p class="post-excerpt">Travis Kelce DM'd Chris Lake after listening with Taylor, and the tech house remix hit #1 on iTunes immediately. <a href="opalite-chris-lake-remix.html">Read more...</a></p>
@@ -903,7 +924,7 @@
         <a class="yt-btn" href="opalite-chris-lake-remix.html">▶ Listen Now</a>
       </div>
 
-      <div class="post-card">
+      <div class="post-card" style="background-image: url('delerium-silence-artwork.jpg');">
         <div class="post-label">🔥 Hot Remix</div>
         <h3 class="post-title"><a href="silence-john-summit-remix.html" style="color: inherit; text-decoration: none;">Delerium — "Silence" (John Summit Remix)</a></h3>
         <p class="post-excerpt">John Summit transforms the 1999 trance classic into a driving tech house weapon that respects the original's emotional weight. <a href="silence-john-summit-remix.html">Read more...</a></p>
@@ -913,7 +934,7 @@
         <a class="yt-btn" href="silence-john-summit-remix.html">▶ Listen Now</a>
       </div>
 
-      <div class="post-card">
+      <div class="post-card" style="background-image: url('chris-brown-run-it-artwork.png');">
         <div class="post-label">🔥 Bass House</div>
         <h3 class="post-title"><a href="run-it-cheyenne-giles-kling-remix.html" style="color: inherit; text-decoration: none;">Chris Brown — "Run It" (Cheyenne Giles x KLING)</a></h3>
         <p class="post-excerpt">First-ever collaboration transforms Chris Brown's 2005 R&B classic into a bass house weapon with crazy sound design. <a href="run-it-cheyenne-giles-kling-remix.html">Read more...</a></p>
